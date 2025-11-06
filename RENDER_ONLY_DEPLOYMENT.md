@@ -155,73 +155,60 @@ CAMPUS_LONGITUDE = 72.97976151022274
 
 ---
 
-## PART 3: Initialize Database (3 minutes)
+## PART 3: Database Auto-Initializes! ✅
 
-### Option A: Use Aiven Query Editor (EASIEST!)
+**Good News**: The database tables are created AUTOMATICALLY on first deployment!
 
-1. Go to Aiven dashboard
+Your app now includes an auto-initialization script that:
+- ✅ Checks if tables exist on startup
+- ✅ Creates all 9 tables automatically if missing
+- ✅ Inserts default admin user
+- ✅ No manual SQL execution needed!
 
-2. Click **acadmark-mysql**
+### What Happens:
 
-3. Look for **"Query Editor"** tab
+1. Render deploys your app
+2. App connects to Aiven MySQL
+3. **Auto-initialization runs** → Creates all tables
+4. App starts successfully!
 
-4. If available, click it
+You'll see this in Render logs:
+```
+✅ Connected to MySQL database
+📦 No tables found. Initializing database...
+✅ Database initialized successfully!
+🚀 AcadMark server running at http://localhost:3000
+```
 
-5. Copy ALL content from:
+### Nothing to Do!
 
-   ```
-   C:\COLLEGE CONTRO NKT CODING CLUB\MarkIn\database_setup.sql
-   ```
+Just wait for deployment to finish (3-4 minutes).
 
-6. Paste into Query Editor
-
-7. Click **"Execute"**
-
-8. ✅ All tables created!
-
----
-
-### Option B: Use DBeaver (If Query Editor not available)
-
-1. Download: **https://dbeaver.io/download/**
-
-2. Install and open
-
-3. Click **"New Connection"** (plug icon)
-
-4. Select **"MySQL"** → Next
-
-5. Enter Aiven credentials:
-
-   - Server Host: [from Aiven]
-   - Port: [from Aiven]
-   - Database: defaultdb
-   - Username: avnadmin
-   - Password: [from Aiven]
-
-6. Click **"Test Connection"** → Download drivers if asked
-
-7. Click **"Finish"**
-
-8. Right-click connection → SQL Editor → Open SQL Script
-
-9. Select `database_setup.sql`
-
-10. Click Execute (⚡ icon)
-
-11. ✅ Done!
+**All tables are created automatically!** 🎉
 
 ---
 
 ## PART 4: Test Your Live App! 🎉
 
-### Step 4.1: Access
+### Step 4.1: Access Your App
 
-1. Go to: `https://acadmark.onrender.com`
+1. Go to Render dashboard
 
-2. ⚠️ First load: 30-60 seconds (waking up)
+2. Click on your **acadmark** service
 
-3. ✅ Login page appears!
+3. Click **"Logs"** tab
+
+4. Wait until you see:
+   ```
+   ✅ Database initialized successfully!
+   🚀 AcadMark server running
+   ```
+
+5. Click your URL at top: `https://acadmark.onrender.com`
+
+6. ⚠️ First load: 30-60 seconds (waking up)
+
+7. ✅ Login page appears!
 
 ---
 
@@ -324,7 +311,7 @@ Render Dashboard → Logs tab
 - [ ] AcadMark connected
 - [ ] 11 environment variables added
 - [ ] Deployment: Live (green)
-- [ ] Database initialized (9 tables)
+- [ ] ✅ **Database auto-initialized** (check logs!)
 - [ ] Can access app URL
 - [ ] Admin login works
 - [ ] Teachers imported (50)
