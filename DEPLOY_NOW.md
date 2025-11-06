@@ -43,11 +43,13 @@ Now let's get it live on the internet in about 10 minutes!
 ## Step 2: Deploy to Render (5 minutes)
 
 1. **Go to Render**
+
    - Visit https://dashboard.render.com/register
    - Click "Sign up with GitHub"
    - Authorize Render
 
 2. **Create New Web Service**
+
    - Click "New +" → "Web Service"
    - Click "Connect account" if needed
    - Find and select: `CODEISPASSIONANDMONEY/AcadMark`
@@ -55,6 +57,7 @@ Now let's get it live on the internet in about 10 minutes!
 
 3. **Configure Service**
    Fill in these details:
+
    ```
    Name: acadmark
    Region: Oregon (US West) or closest to you
@@ -67,36 +70,36 @@ Now let's get it live on the internet in about 10 minutes!
    ```
 
 4. **Add Environment Variables**
-   
+
    Click "Advanced" → Scroll to "Environment Variables" → Click "Add Environment Variable"
-   
+
    Add each of these (click "Add Environment Variable" for each):
 
    ```
    NODE_ENV = production
-   
+
    PORT = 3000
-   
+
    DB_HOST = [paste from PlanetScale - e.g., xxxxx.connect.psdb.cloud]
-   
+
    DB_USER = [paste from PlanetScale]
-   
+
    DB_PASSWORD = [paste from PlanetScale - starts with pscale_pw_]
-   
+
    DB_NAME = acadmark
-   
+
    DB_PORT = 3306
-   
+
    SESSION_SECRET = acadmark-secret-key-change-in-production-2025
-   
+
    ADMIN_USER = admin@acadmark
-   
+
    ADMIN_PASSWORD = Admin@2025!Secure
-   
+
    CAMPUS_LATITUDE = 19.0760
-   
+
    CAMPUS_LONGITUDE = 72.8777
-   
+
    CAMPUS_RADIUS_METERS = 500
    ```
 
@@ -112,9 +115,9 @@ Now let's get it live on the internet in about 10 minutes!
 After deployment succeeds:
 
 1. **Connect to Database**
-   
+
    Open your MySQL client (MySQL Workbench, DBeaver, or online):
-   
+
    - Host: [your DB_HOST]
    - Username: [your DB_USER]
    - Password: [your DB_PASSWORD]
@@ -122,13 +125,14 @@ After deployment succeeds:
    - Port: 3306
 
 2. **Run Database Setup**
-   
+
    - Open `database_setup.sql` from your local project
    - Copy all contents
    - Run in your MySQL client
    - Verify: Should create 9 tables
 
    **OR use PlanetScale Console:**
+
    - Go to PlanetScale dashboard
    - Click on your database
    - Click "Console" tab
@@ -140,11 +144,13 @@ After deployment succeeds:
 ## Step 4: Access Your Live Application! 🎉
 
 1. **Find Your URL**
+
    - In Render dashboard, your app URL is shown at top
    - Format: `https://acadmark.onrender.com` (or similar)
    - Click on it to open
 
 2. **First Login**
+
    ```
    URL: https://your-app.onrender.com
    Username: admin@acadmark
@@ -179,20 +185,24 @@ After deployment, verify:
 ## 🔧 Troubleshooting
 
 ### App shows "Application Error"
+
 - Check Render logs for errors
 - Verify all environment variables are set
 - Check database connection
 
 ### Can't connect to database
+
 - Verify DB credentials in environment variables
 - Check if PlanetScale database is running
 - Test connection with MySQL Workbench
 
 ### Database tables not found
+
 - Run `database_setup.sql` in your database
 - Check if all 9 tables were created
 
 ### Login fails
+
 - Verify ADMIN_USER and ADMIN_PASSWORD in env vars
 - Clear browser cache/cookies
 - Check Render logs for errors
@@ -202,13 +212,16 @@ After deployment, verify:
 ## 📞 Quick Support Commands
 
 **View Logs:**
+
 - In Render dashboard → Logs tab
 - Watch real-time logs as app runs
 
 **Restart App:**
+
 - In Render dashboard → Manual Deploy → "Clear build cache & deploy"
 
 **Update Environment Variables:**
+
 - In Render dashboard → Environment tab
 - Add/Edit variables → Save changes (auto-deploys)
 
@@ -219,6 +232,7 @@ After deployment, verify:
 Share these URLs with your users:
 
 **Admin Portal:**
+
 ```
 URL: https://your-app.onrender.com
 Username: admin@acadmark
@@ -226,6 +240,7 @@ Password: Admin@2025!Secure
 ```
 
 **Teachers:**
+
 ```
 URL: https://your-app.onrender.com
 Login: Use Teacher ID (TCH001, TCH002, etc.)
@@ -233,6 +248,7 @@ No password needed
 ```
 
 **Students:**
+
 ```
 URL: https://your-app.onrender.com
 Login: Use Student ID (STU001, STU002, etc.)
@@ -244,6 +260,7 @@ No password needed
 ## 📊 Free Tier Limits
 
 Render Free Tier includes:
+
 - ✅ 750 hours/month (enough for 24/7)
 - ✅ Automatic HTTPS
 - ✅ Auto-deploy from GitHub
@@ -251,6 +268,7 @@ Render Free Tier includes:
 - ⚠️ Cold starts (15-30 seconds to wake up)
 
 PlanetScale Free Tier:
+
 - ✅ 5 GB storage
 - ✅ 1 billion row reads/month
 - ✅ 10 million row writes/month
@@ -260,6 +278,7 @@ PlanetScale Free Tier:
 ---
 
 Need help? Check the logs first, then review this guide. Most issues are due to:
+
 1. Missing environment variables
 2. Database not initialized
 3. Wrong credentials
